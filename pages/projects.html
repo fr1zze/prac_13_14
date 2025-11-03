@@ -194,16 +194,22 @@
                             <p class="project-description">Был создан в рамках 1 контрольной работы</p>
                         </div>
                     </article>
-                    <article class="project-card" data-tag="JavaScript">
+                    <article class="project-card" data-tag="JavaScript" onclick="contactModal3.showModal()">
+                        <div class="project-image-container">
+                            <img class="project-image" src="../images/999.jpg" alt="Интернет-магазин">
+                        </div>
                         <div class="project-info">
                             <h3 class="project-name">Интернет-магазин</h3>
-                            <p class="project-description">To be continued...</p>
+                            <p class="project-description">Сделан мною</p>
                         </div>
                     </article>
-                    <article class="project-card" data-tag="Golang">
+                    <article class="project-card" data-tag="Golang" onclick="contactModal4.showModal()">
+                        <div class="project-image-container">
+                            <img class="project-image" src="../images/doc.svg" alt="Портфолио">
+                        </div>
                         <div class="project-info">
-                            <h3 class="project-name">Todo-приложение</h3>
-                            <p class="project-description">To be continued...</p>
+                            <h3 class="project-name">Docker</h3>
+                            <p class="project-description">Был одним из разработчиков</p>
                         </div>
                     </article>
                     <article class="project-card" data-tag="Bootstrap" onclick="contactModal2.showModal()">
@@ -277,6 +283,62 @@
                     </div>
                     <div class="modal-actions">
                         <button type="button" class="btn btn-primary" onclick="contactModal2.close()">Закрыть</button>
+                    </div>
+                </form>
+            </div>
+        </dialog>
+        <dialog id="contactModal3">
+            <div class="modal-header">
+                <h2>Интернет-магазин</h2>
+            </div>
+
+            <div class="modal-content">
+                <form id="feedbackForm" method="dialog">
+                    <div class="">
+                        <h2>Был разработан мною в течение нескольких лет.</h2>
+                        <h2>Скриншоты:</h2>
+                        <img class="project-image" src="../images/1000-7.jpg" alt="Скриншот главной страницы"
+                            class="img-fluid rounded-circle" style="width: 200px; height: 200px; object-fit: cover;">
+                        <img class="project-image" src="../images/993.jpg" alt="Скриншот товаров bootstrap"
+                            class="img-fluid rounded-circle" style="width: 200px; height: 200px; object-fit: cover;">
+                    </div>
+                    <div>
+                        <a href="https://market.yandex.ru/" target="_blank">
+                            <button type="button" class="btn btn-primary">Живая версия</button>
+                        </a>
+                        <a href="https://github.com/yandex-market/yandex-market-partner-api" target="_blank">
+                            <button type="button" class="btn btn-primary">Исходный код</button>
+                        </a>
+                    </div>
+                    <div class="modal-actions">
+                        <button type="button" class="btn btn-primary" onclick="contactModal3.close()">Закрыть</button>
+                    </div>
+                </form>
+            </div>
+        </dialog>
+        <dialog id="contactModal4">
+            <div class="modal-header">
+                <h2>Docker</h2>
+            </div>
+
+            <div class="modal-content">
+                <form id="feedbackForm" method="dialog">
+                    <div class="">
+                        <h2>Был одним из разработчиков данного проекта</h2>
+                        <h2>Скриншоты:</h2>
+                        <img class="project-image" src="../images/docker-dashboard.png" alt="Скриншот главной страницы"
+                            class="img-fluid rounded-circle" style="width: 200px; height: 200px; object-fit: cover;">
+                    </div>
+                    <div>
+                        <a href="https://www.docker.com/" target="_blank">
+                            <button type="button" class="btn btn-primary">Живая версия</button>
+                        </a>
+                        <a href="https://github.com/docker" target="_blank">
+                            <button type="button" class="btn btn-primary">Исходный код</button>
+                        </a>
+                    </div>
+                    <div class="modal-actions">
+                        <button type="button" class="btn btn-primary" onclick="contactModal4.close()">Закрыть</button>
                     </div>
                 </form>
             </div>
