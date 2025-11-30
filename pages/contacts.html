@@ -1,21 +1,22 @@
 <!DOCTYPE html>
-<html lang="eng">
+<html lang="ru">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <title>Контакты</title>
     <link rel="stylesheet" href="../styles/styles.css">
 </head>
 
 <body>
+    <a class="skip-link" href="#main">Перейти к основному содержимому</a>
     <div class="page-container">
         <header>
             <img src="../images/icons/icon.png" alt="Логотип" class="img-fluid rounded-circle"
                 style="width: 150px; height: 150px; object-fit: cover;">
-            <p>Шлапаков Максим Геннадьевич</p>
+            <h1>Шлапаков Максим Геннадьевич</h1>
         </header>
-        <nav class="nav">
+        <nav class="nav" aria-label="Основная навигация">
             <ul class="nav-list">
                 <li class="nav-item"><a class="nav-link" href="../index.html">Главная</a></li>
                 <li class="nav-item"><a class="nav-link" href="projects.html">Проекты</a></li>
@@ -24,29 +25,30 @@
             </ul>
         </nav>
 
-        <main class="content">
+        <main class="content" id="main">
             <h1>Свяжитесь со мной</h1>
             <article class="contacts-header">
                 <form id="ContactForm">
-                    <label for="username">Имя:</label>
-                    <input type="text" id="username" name="username" required>
+                    <div class="form-group">
+                        <label for="username">Имя:</label>
+                        <input type="text" id="username" name="username" required>
 
-                    <label for="email">Email:</label>
-                    <input type="text" name="email" id="email" required>
+                        <label for="email">Email:</label>
+                        <input type="text" name="email" id="email" required>
 
-                    <label for="message">Сообщение:</label>
-                    <textarea name="message" id="message" rows="6" required></textarea>
+                        <label for="message">Сообщение:</label>
+                        <textarea name="message" id="message" rows="6" required></textarea>
 
-                    <button type="submit" id="submit" name="submit">Отправить</button>
+                        <button type="submit" id="submit" name="submit">Отправить</button>
 
-                    <button type="reset" id="reset" name="reset">Очистить</button>
-
+                        <button type="reset" id="reset" name="reset">Очистить</button>
+                    </div>
                 </form>
             </article>
 
             <h2>Контакты:</h2>
             <p>
-                📧 shlapakov.m.g@edu.mirea.ru  
+                📧 shlapakov.m.g@edu.mirea.ru
             </p>
             <p>
                 📱 GitHub: fr1zze
@@ -61,11 +63,11 @@
         </footer>
     </div>
     <script>
-        const form = document.getElementById('ContactForm'); 
-        const emailInput = document.getElementById('email');  
+        const form = document.getElementById('ContactForm');
+        const emailInput = document.getElementById('email');
         const usernameInput = document.getElementById('username');
 
-        emailInput.addEventListener('input', validateEmail); 
+        emailInput.addEventListener('input', validateEmail);
         usernameInput.addEventListener('input', validateUsername);
 
         function validateUsername() {
@@ -81,7 +83,7 @@
 
         }
 
-        function validateEmail() { 
+        function validateEmail() {
 
             const emailRegex = /[A-Za-z0-9_\-\.]{2,10}@[a-z0-9\.\-_]{1,10}\.[a-z]{2,3}/;
             if (emailRegex.test(emailInput.value)) {
@@ -97,7 +99,7 @@
 
         function showError(input, message) {
 
-            const formControl = input.parentElement; 
+            const formControl = input.parentElement;
             const errorElement = formControl.querySelector('.error') || document.createElement('div');
 
             errorElement.className = 'error';

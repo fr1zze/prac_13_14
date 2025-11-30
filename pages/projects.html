@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="eng">
+<html lang="ru">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <title>Проекты</title>
     <link rel="stylesheet" href="../styles/styles.css">
     <style>
@@ -155,17 +155,19 @@
                 width: 100%;
             }
         }
+        
     </style>
 </head>
 
 <body>
+    <a class="skip-link" href="#main">Перейти к основному содержимому</a>
     <div class="page-container">
         <header>
             <img src="../images/icons/icon.png" alt="Логотип" class="img-fluid rounded-circle"
                 style="width: 150px; height: 150px; object-fit: cover;">
-            <p>Шлапаков Максим Геннадьевич</p>
+            <h1>Шлапаков Максим Геннадьевич</h1>
         </header>
-        <nav class="nav">
+        <nav class="nav" aria-label="Основная навигация">
             <ul class="nav-list">
                 <li class="nav-item"><a class="nav-link" href="../index.html">Главная</a></li>
                 <li class="nav-item"><a class="nav-link" href="projects.html">Проекты</a></li>
@@ -174,7 +176,7 @@
             </ul>
         </nav>
 
-        <main class="content">
+        <main class="content" id="main">
             <section class="project-section">
                 <h1>Мои проекты</h1>
                 <button type="button" class="btn btn-primary" data-fil="all">Все</button>
@@ -185,7 +187,7 @@
                 <button type="button" class="btn btn-primary" data-fil="C#">C#</button>
                 <button type="button" class="btn btn-primary" data-fil="Golang">Golang</button>
                 <div class="project-grid">
-                    <article class="project-card" data-tag="HTML, CSS" onclick="contactModal.showModal()">
+                    <article class="project-card" data-tag="HTML,CSS" onclick="contactModal.showModal()">
                         <div class="project-image-container">
                             <img class="project-image" src="../images/image33.png" alt="Личный сайт">
                         </div>
@@ -238,10 +240,10 @@
                         <h2>Был разработан сайт в рамках 1 контрольной работы. В нем вы найдете информацию обо мне, моих
                             навыках, и т.д.</h2>
                         <h2>Скриншоты:</h2>
-                        <img class="project-image" src="../images/141.png" alt="Скриншот личного сайта"
-                            class="img-fluid rounded-circle" style="width: 200px; height: 200px; object-fit: cover;">
-                        <img class="project-image" src="../images/142.png" alt="Скриншот товаров"
-                            class="img-fluid rounded-circle" style="width: 200px; height: 200px; object-fit: cover;">
+                        <img class="project-image img-fluid rounded-circle" src="../images/141.png" alt="Скриншот личного сайта"
+                            style="width: 200px; height: 200px; object-fit: cover;">
+                        <img class="project-image img-fluid rounded-circle" src="../images/142.png" alt="Скриншот товаров" 
+                            style="width: 200px; height: 200px; object-fit: cover;">
                     </div>
                     <div>
                         <a href="https://fr1zze.github.io/front-and-back-prac_kr2/" target="_blank">
@@ -268,10 +270,10 @@
                         <h2>Было разработано портфолио в рамках 2 контрольной работы с ипользованием bootstrap. В нем вы
                             найдете измененную главную страницу и страницу товаров.</h2>
                         <h2>Скриншоты:</h2>
-                        <img class="project-image" src="../images/92.png" alt="Скриншот главной страницы"
-                            class="img-fluid rounded-circle" style="width: 200px; height: 200px; object-fit: cover;">
-                        <img class="project-image" src="../images/93.png" alt="Скриншот товаров bootstrap"
-                            class="img-fluid rounded-circle" style="width: 200px; height: 200px; object-fit: cover;">
+                        <img class="project-image img-fluid rounded-circle" src="../images/92.png" alt="Скриншот главной страницы"
+                             style="width: 200px; height: 200px; object-fit: cover;">
+                        <img class="project-image img-fluid rounded-circle" src="../images/93.png" alt="Скриншот товаров bootstrap"
+                             style="width: 200px; height: 200px; object-fit: cover;">
                     </div>
                     <div>
                         <a href="https://fr1zze.github.io/front-and-back-prac_kr2_v1/index_V1.html" target="_blank">
@@ -297,10 +299,10 @@
                     <div class="">
                         <h2>Был разработан мною в течение нескольких лет.</h2>
                         <h2>Скриншоты:</h2>
-                        <img class="project-image" src="../images/1000-7.jpg" alt="Скриншот главной страницы"
-                            class="img-fluid rounded-circle" style="width: 200px; height: 200px; object-fit: cover;">
-                        <img class="project-image" src="../images/993.jpg" alt="Скриншот товаров bootstrap"
-                            class="img-fluid rounded-circle" style="width: 200px; height: 200px; object-fit: cover;">
+                        <img class="project-image img-fluid rounded-circle" src="../images/1000-7.jpg" alt="Скриншот главной страницы"
+                             style="width: 200px; height: 200px; object-fit: cover;">
+                        <img class="project-image img-fluid rounded-circle" src="../images/993.jpg" alt="Скриншот товаров bootstrap"
+                             style="width: 200px; height: 200px; object-fit: cover;">
                     </div>
                     <div>
                         <a href="https://market.yandex.ru/" target="_blank">
@@ -326,8 +328,8 @@
                     <div class="">
                         <h2>Был одним из разработчиков данного проекта</h2>
                         <h2>Скриншоты:</h2>
-                        <img class="project-image" src="../images/docker-dashboard.png" alt="Скриншот главной страницы"
-                            class="img-fluid rounded-circle" style="width: 200px; height: 200px; object-fit: cover;">
+                        <img class="project-image img-fluid rounded-circle" src="../images/docker-dashboard.png" alt="Скриншот главной страницы"
+                             style="width: 200px; height: 200px; object-fit: cover;">
                     </div>
                     <div>
                         <a href="https://www.docker.com/" target="_blank">
