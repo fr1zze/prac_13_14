@@ -720,3 +720,43 @@ grid-template-columns: repeat(2, 1fr);
 grid-template-columns: 1fr;
 }
 }
+
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+.error-text {
+  margin-top: 0.35rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #b00020; 
+}
+.input-invalid {
+  border-color: #b00020 !important;
+  box-shadow: 0 0 0 3px rgba(176, 0, 32, 0.10);
+  background-image: url("../images/icons/error.svg");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+}
+.input-valid {
+  border-color: #0b8457 !important;
+  box-shadow: 0 0 0 3px rgba(11, 132, 87, 0.08);
+  background-image: url("../images/icons/success.svg");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+}
+.input-invalid,
+.input-valid {
+    padding-right: 40px;
+}
+*, *::before, *::after {
+    box-sizing: border-box;
+}

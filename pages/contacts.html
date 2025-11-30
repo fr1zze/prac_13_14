@@ -14,7 +14,7 @@
         <header>
             <img src="../images/icons/icon.png" alt="Логотип" class="img-fluid rounded-circle"
                 style="width: 150px; height: 150px; object-fit: cover;">
-            <h1>Шлапаков Максим Геннадьевич</h1>
+            <p>Шлапаков Максим Геннадьевич</p>
         </header>
         <nav class="nav" aria-label="Основная навигация">
             <ul class="nav-list">
@@ -28,21 +28,37 @@
         <main class="content" id="main">
             <h1>Свяжитесь со мной</h1>
             <article class="contacts-header">
-                <form id="ContactForm">
-                    <div class="form-group">
-                        <label for="username">Имя:</label>
-                        <input type="text" id="username" name="username" required>
+                <form id="ContactForm" novalidate>
+                    <fieldset>
+                        <legend class="sr-only">Форма обратной связи</legend>
 
-                        <label for="email">Email:</label>
-                        <input type="text" name="email" id="email" required>
+                        <div class="form-control">
+                            <label for="username">Имя:</label>
+                            <input type="text" id="username" name="username" required autocomplete="name"
+                                inputmode="text" aria-required="true" aria-describedby="username-error">
+                            <!-- контейнер для ошибки рядом с полем, будет доступен скринридеру -->
+                            <div id="username-error" class="error-text" role="alert" aria-live="assertive"></div>
+                        </div>
 
-                        <label for="message">Сообщение:</label>
-                        <textarea name="message" id="message" rows="6" required></textarea>
+                        <div class="form-control">
+                            <label for="email">Email:</label>
+                            <input type="text" id="email" name="email" required autocomplete="email" inputmode="email"
+                                aria-required="true" aria-describedby="email-error">
+                            <div id="email-error" class="error-text" role="alert" aria-live="assertive"></div>
+                        </div>
 
-                        <button type="submit" id="submit" name="submit">Отправить</button>
+                        <div class="form-control">
+                            <label for="message">Сообщение:</label>
+                            <textarea id="message" name="message" rows="6" required aria-required="true"
+                                aria-describedby="message-error"></textarea>
+                            <div id="message-error" class="error-text" role="alert" aria-live="assertive"></div>
+                        </div>
 
-                        <button type="reset" id="reset" name="reset">Очистить</button>
-                    </div>
+                        <div class="form-actions">
+                            <button type="submit" id="submit" name="submit">Отправить</button>
+                            <button type="reset" id="reset" name="reset" aria-label="Очистить форму">Очистить</button>
+                        </div>
+                    </fieldset>
                 </form>
             </article>
 
@@ -66,60 +82,87 @@
         const form = document.getElementById('ContactForm');
         const emailInput = document.getElementById('email');
         const usernameInput = document.getElementById('username');
+        const messageInput = document.getElementById('message');
 
         emailInput.addEventListener('input', validateEmail);
         usernameInput.addEventListener('input', validateUsername);
+        messageInput && messageInput.addEventListener('input', validateMessage);
+
+        form.addEventListener('submit', function (e) {
+
+            if (!validateUsername() | !validateEmail() | !validateMessage()) {
+                e.preventDefault();
+
+                const firstInvalid = form.querySelector('[aria-invalid="true"]');
+                if (firstInvalid) firstInvalid.focus();
+            }
+        });
 
         function validateUsername() {
-            const usernameRegex = /[A-Яа-я]/;
-            if (usernameRegex.test(usernameInput.value)) {
+            const usernameRegex = /[A-Яа-яЁё]+/;
+            if (usernameRegex.test(usernameInput.value.trim())) {
                 removeError(usernameInput);
                 return true;
-            }
-            else {
-                showError(usernameInput, "Username не соответствует формату. Пример: Иван");
+            } else {
+                showError(usernameInput, "Имя не соответствует формату. Пример: Иван");
                 return false;
             }
-
         }
 
         function validateEmail() {
-
-            const emailRegex = /[A-Za-z0-9_\-\.]{2,10}@[a-z0-9\.\-_]{1,10}\.[a-z]{2,3}/;
-            if (emailRegex.test(emailInput.value)) {
+            const emailRegex = /^[A-Za-z0-9._%+-]{2,}@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/i;
+            if (emailRegex.test(emailInput.value.trim())) {
                 removeError(emailInput);
                 return true;
-            }
-            else {
+            } else {
                 showError(emailInput, "Email не соответствует формату. Пример: ivanov@mail.ru");
                 return false;
             }
+        }
 
+        function validateMessage() {
+            if (!messageInput) return true;
+            if (messageInput.value.trim().length >= 5) {
+                removeError(messageInput);
+                return true;
+            } else {
+                showError(messageInput, "Сообщение слишком короткое (мин. 5 символов).");
+                return false;
+            }
         }
 
         function showError(input, message) {
+            const id = input.id + '-error';
+            const errorElement = document.getElementById(id);
+            if (errorElement) {
+                errorElement.textContent = message;
 
-            const formControl = input.parentElement;
-            const errorElement = formControl.querySelector('.error') || document.createElement('div');
+            } else {
 
-            errorElement.className = 'error';
-            errorElement.textContent = message;
-
-            formControl.appendChild(errorElement);
-            input.style.borderColor = 'red';
-
+                const el = document.createElement('div');
+                el.className = 'error-text';
+                el.id = id;
+                el.setAttribute('role', 'alert');
+                el.setAttribute('aria-live', 'assertive');
+                el.textContent = message;
+                input.insertAdjacentElement('afterend', el);
+            }
+            input.setAttribute('aria-invalid', 'true');
+            input.classList.remove('input-valid');
+            input.classList.add('input-invalid');
+            input.setAttribute('aria-describedby', id);
         }
 
         function removeError(input) {
-
-            const formControl = input.parentElement;
-            const errorElement = formControl.querySelector('.error');
-
+            const id = input.id + '-error';
+            const errorElement = document.getElementById(id);
             if (errorElement) {
-                formControl.removeChild(errorElement);
+                errorElement.textContent = '';
             }
-
-            input.style.borderColor = 'green';
+            input.removeAttribute('aria-invalid');
+            input.classList.remove('input-invalid');
+            input.classList.add('input-valid');
+            input.setAttribute("aria-describedby", input.id + "-error");
         }
     </script>
 </body>
